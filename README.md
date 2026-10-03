@@ -26,7 +26,8 @@ pip install -r requirements.txt
 ## 사용법
 ```
 cd src
-nohup python -u run_rg3.py > ../logs/rg3_run.log 2>&1 &
+nohup python -u run_rg3.py > ../logs/rg3_run.log 2>&1 &   # rg3 실험 제출
+nohup python -u run_cn7.py > ../logs/cn7_run.log 2>&1 &   # cn7 실험 제출
 ```
 
 ## 실험 설정
