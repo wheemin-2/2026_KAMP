@@ -324,6 +324,7 @@ def _prep_columns(prep_options: Dict) -> Dict:
 
 def run_experiment(
     product: str,
+    process_type: str,
     prep_options: Optional[Dict] = None,
     models: Sequence[str] = ("svc", "rf", "gnb", "dnn"),
     ssl_methods: Sequence[Optional[str]] = (None,),
@@ -345,7 +346,7 @@ def run_experiment(
     """전처리 설정 1개에 대해 (모델 x 준지도 방식) 전부를 학습/평가하고 로그에 남긴다."""
     prep_options = dict(prep_options or {})
     prep_options.setdefault("random_state", random_state)
-    out = preprocess_product(product, data_dir=data_dir, verbose=False, **prep_options)
+    out = preprocess_product(product, process_type, data_dir=data_dir, verbose=False, **prep_options)
     prep_cols = _prep_columns(prep_options)
     run_tag = _run_tag or time.strftime("%Y%m%d-%H%M%S")
 
@@ -360,13 +361,14 @@ def run_experiment(
         except Exception as e:
             if not skip_on_error:
                 raise
-            warnings.warn(f"[{product}/{m}/ssl={s}] 실패하여 건너뜁니다: {type(e).__name__}: {e}")
+            warnings.warn(f"[{product}/{process_type}/{m}/ssl={s}] 실패하여 건너뜁니다: {type(e).__name__}: {e}")
             continue
         r.pop("_cv_results", None)
         r = {
-            "exp_id": f"{run_tag}-{product}-{m}-{_tag(s)}-{hashlib.md5(prep_cols['prep_json'].encode('utf-8')).hexdigest()[:6]}",
+            "exp_id": f"{run_tag}-{product}-{process_type}-{m}-{_tag(s)}-{hashlib.md5(prep_cols['prep_json'].encode('utf-8')).hexdigest()[:6]}",
             "run_time": time.strftime("%Y-%m-%d %H:%M:%S"),
             "product": product,
+            "process_type":process_type,
             **prep_cols,
             **r,
         }
@@ -380,6 +382,7 @@ def run_experiment(
 
 def run_experiments(
     product: str,
+    process_type: str,
     prep_grid: Union[Dict[str, list], List[Dict]],
     models: Sequence[str] = ("svc", "rf", "gnb", "dnn"),
     ssl_methods: Sequence[Optional[str]] = (None,),
@@ -405,9 +408,9 @@ def run_experiments(
     run_tag = time.strftime("%Y%m%d-%H%M%S")
     all_rows: List[Dict] = []
     for i, combo in enumerate(combos, 1):
-        print(f"\n===== [{i}/{len(combos)}] {product} preprocessing: {combo} =====")
+        print(f"\n===== [{i}/{len(combos)}] {product}/{process_type} preprocessing: {combo} =====")
         all_rows += run_experiment(
-            product, combo, models, ssl_methods, log=log, _run_tag=run_tag, **kwargs
+            product, process_type, combo, models, ssl_methods, log=log, _run_tag=run_tag, **kwargs
         )
 
     if not all_rows:
@@ -424,7 +427,7 @@ def run_experiments(
 if __name__ == "__main__":
     # 실행 예시: 데이터 경로/옵션은 환경에 맞게 수정
     run_experiments(
-        "cn7",
+        "cn7", "processed2",
         prep_grid={
             "scaling": ["standard", "robust"],
             "feature_selection": [None, ["corr", "kbest"]],

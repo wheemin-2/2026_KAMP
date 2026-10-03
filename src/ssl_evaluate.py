@@ -99,7 +99,7 @@ CV_METRICS = ["f1", "roc_auc", "average_precision", "recall", "precision", "accu
 def print_result(row: Dict) -> None:
     """한 실험 결과를 사람이 보기 좋게 출력."""
     head = (
-        f"[{row.get('product')}] model={row.get('model')} | ssl={row.get('semi_supervised')} | "
+        f"[{row.get('product')}/{row.get('process_type')}] model={row.get('model')} | ssl={row.get('semi_supervised')} | "
         f"scaling={row.get('prep_scaling')} | fs={row.get('prep_feature_selection')} | "
         f"imbalance={row.get('prep_imbalance')} | outlier={row.get('prep_outlier')}"
     )
@@ -157,7 +157,7 @@ class ExperimentLog:
         if product is not None:
             df = df[df["product"] == product]
         cols = [
-            "exp_id", "product", "model", "semi_supervised",
+            "exp_id", "product", "process_type", "model", "semi_supervised",
             "prep_scaling", "prep_feature_selection", "prep_imbalance", "prep_outlier",
             "n_features", "cv_score",
         ] + METRIC_COLS

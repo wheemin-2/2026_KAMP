@@ -84,6 +84,7 @@ class DataLoader:
     def __init__(
         self,
         product: str,
+        process_type: str,
         data_dir: str = DEFAULT_DATA_DIR,
         test_size: float = 0.3,
         random_state: int = 42,
@@ -93,12 +94,21 @@ class DataLoader:
         if product not in ("cn7", "rg3"):
             raise ValueError("product 는 'cn7' 또는 'rg3' 이어야 합니다.")
 
-        labeled = pd.read_csv(
-            os.path.join(data_dir, f"moldset_labeled_{product}.csv"), index_col=0
-        )
-        unlabeled = pd.read_csv(
-            os.path.join(data_dir, f"moldset_unlabeled_{product}.csv"), index_col=0
-        )
+        if process_type == 'processed2':
+
+            labeled = pd.read_csv(
+                os.path.join(data_dir, f"{process_type}_moldset_labeled_{product}.csv"), index_col=0
+            ).iloc[:,1:]
+            unlabeled = pd.read_csv(
+                os.path.join(data_dir, f"processed_moldset_unlabeled_{product}.csv"), index_col=0
+            )
+        else:
+            labeled = pd.read_csv(
+                os.path.join(data_dir, f"processed_moldset_labeled_{product}.csv"), index_col=0
+            )
+            unlabeled = pd.read_csv(
+                os.path.join(data_dir, f"processed_moldset_unlabeled_{product}.csv"), index_col=0
+            )
 
         X = labeled.loc[:, labeled.columns != target_col]
         y = labeled[target_col]
@@ -109,6 +119,7 @@ class DataLoader:
         train_idx, test_idx = next(sss.split(X, y))
 
         self.product = product
+        self.process_type = process_type
         self.labeled_train_X = X.iloc[train_idx]
         self.labeled_train_Y = y.iloc[train_idx]
         self.labeled_test_X = X.iloc[test_idx]
@@ -544,6 +555,7 @@ def preprocess_data(
 
 def preprocess_product(
     product: str,
+    process_type: str,
     data_dir: str = DEFAULT_DATA_DIR,
     test_size: float = 0.3,
     split_random_state: int = 42,
@@ -556,7 +568,7 @@ def preprocess_product(
     preprocess_kwargs 에는 preprocess_data 의 옵션(scaling, feature_selection,
     imbalance, ...)을 그대로 넘기면 된다.
     """
-    d = DataLoader(product, data_dir=data_dir, test_size=test_size, random_state=split_random_state)
+    d = DataLoader(product, process_type, data_dir=data_dir, test_size=test_size, random_state=split_random_state)
     return preprocess_data(
         d.labeled_train_X,
         d.labeled_train_Y,
@@ -571,7 +583,7 @@ if __name__ == "__main__":
     # 간단한 실행 예시 (데이터 경로를 환경에 맞게 수정)
     for prod in ("cn7", "rg3"):
         out = preprocess_product(
-            prod,
+            prod, "processed2",
             scaling="standard",
             feature_selection=["corr", "kbest"],
             k_best=15,
