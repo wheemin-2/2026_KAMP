@@ -4,13 +4,14 @@
 불량(PassOrFail)을 예측하는 준지도 학습 실험 프로젝트.
 
 ## 프로젝트 구조
+```
 .
 ├── data/ # 데이터
 ├── notebooks/ # 전처리·EDA 노트북
 ├── src/ # 전처리, 모델, 학습, 평가 모듈
 ├── logs/ # 실험 로그 (experiment_log.csv)
 └── README.md
-
+```
 
 ## 환경 설정
 python -m venv .venv && source .venv/bin/activate
