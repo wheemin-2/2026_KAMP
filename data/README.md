@@ -17,7 +17,6 @@
 - 피처 값은 모두 동일하지만, 레이블 값이 다른 경우 : 불량으로 간주하고 불량인 경우만 채택
 
 ### Processed data (2)
-- 현재 진행 중
 - labeled data에서 두 제품의 Clamp_Open_Position이 모두 0인 문제 확인
 - unlabeled data에는 정상적으로 기록되어있으므로, 이를 바탕으로 labeled의 COP 변수값을 예측 후 대치함
 - CN7과 RG3의 데이터 분포가 다르기 때문에 서로 다른 예측 모형을 적용, 각각 Decision Tree (dt)와 Extra Tree (et) - `pycaret` 활용
