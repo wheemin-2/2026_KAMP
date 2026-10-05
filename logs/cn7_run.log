@@ -1,0 +1,73 @@
+START 2026-10-05 15:21:38
+
+===== [1/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': None, 'corr_threshold': 0.9, 'imbalance': 'class_weight'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.9839  Recall=1.0000  Precision=0.7000  F1=0.8235  ROC-AUC=0.9928  PR-AUC=0.7254
+    confusion(tn/fp/fn/tp)=176/3/0/7  cv_f1=0.6397  n_features=24  fit_time=90.7s
+    best_params={"kernel": "rbf", "gamma": 0.01, "C": 100}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.9624  Recall=0.7143  Precision=0.5000  F1=0.5882  ROC-AUC=0.9761  PR-AUC=0.8006
+    confusion(tn/fp/fn/tp)=174/5/2/5  cv_f1=0.6476  n_features=24  fit_time=519.1s
+    best_params={"n_estimators": 600, "min_samples_leaf": 2, "max_features": 0.5, "max_depth": 10}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.7097  Recall=1.0000  Precision=0.1148  F1=0.2059  ROC-AUC=0.9537  PR-AUC=0.5923
+    confusion(tn/fp/fn/tp)=125/54/0/7  cv_f1=0.2158  n_features=24  fit_time=0.3s
+    best_params={"var_smoothing": 1e-11}
+
+===== [2/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': None, 'corr_threshold': 0.9, 'imbalance': 'smote'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.9731  Recall=0.7143  Precision=0.6250  F1=0.6667  ROC-AUC=0.9792  PR-AUC=0.5506
+    confusion(tn/fp/fn/tp)=176/3/2/5  cv_f1=0.5965  n_features=24  fit_time=199.1s
+    best_params={"kernel": "rbf", "gamma": 0.01, "C": 100}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.9785  Recall=0.7143  Precision=0.7143  F1=0.7143  ROC-AUC=0.9848  PR-AUC=0.8357
+    confusion(tn/fp/fn/tp)=177/2/2/5  cv_f1=0.6831  n_features=24  fit_time=972.4s
+    best_params={"n_estimators": 400, "min_samples_leaf": 2, "max_features": "sqrt", "max_depth": null}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.7527  Recall=0.7143  Precision=0.1020  F1=0.1786  ROC-AUC=0.8723  PR-AUC=0.3348
+    confusion(tn/fp/fn/tp)=135/44/2/5  cv_f1=0.2802  n_features=24  fit_time=0.4s
+    best_params={"var_smoothing": 1e-07}
+
+===== [3/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': None, 'corr_threshold': 0.8, 'imbalance': 'class_weight'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.9839  Recall=1.0000  Precision=0.7000  F1=0.8235  ROC-AUC=0.9928  PR-AUC=0.7254
+    confusion(tn/fp/fn/tp)=176/3/0/7  cv_f1=0.6397  n_features=24  fit_time=103.3s
+    best_params={"kernel": "rbf", "gamma": 0.01, "C": 100}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.9624  Recall=0.7143  Precision=0.5000  F1=0.5882  ROC-AUC=0.9761  PR-AUC=0.8006
+    confusion(tn/fp/fn/tp)=174/5/2/5  cv_f1=0.6476  n_features=24  fit_time=568.9s
+    best_params={"n_estimators": 600, "min_samples_leaf": 2, "max_features": 0.5, "max_depth": 10}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=none | imbalance=class_weight | outlier=none
+    Accuracy=0.7097  Recall=1.0000  Precision=0.1148  F1=0.2059  ROC-AUC=0.9537  PR-AUC=0.5923
+    confusion(tn/fp/fn/tp)=125/54/0/7  cv_f1=0.2158  n_features=24  fit_time=0.4s
+    best_params={"var_smoothing": 1e-11}
+
+===== [4/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': None, 'corr_threshold': 0.8, 'imbalance': 'smote'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.9731  Recall=0.7143  Precision=0.6250  F1=0.6667  ROC-AUC=0.9792  PR-AUC=0.5506
+    confusion(tn/fp/fn/tp)=176/3/2/5  cv_f1=0.5965  n_features=24  fit_time=248.4s
+    best_params={"kernel": "rbf", "gamma": 0.01, "C": 100}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.9785  Recall=0.7143  Precision=0.7143  F1=0.7143  ROC-AUC=0.9848  PR-AUC=0.8357
+    confusion(tn/fp/fn/tp)=177/2/2/5  cv_f1=0.6831  n_features=24  fit_time=1151.4s
+    best_params={"n_estimators": 400, "min_samples_leaf": 2, "max_features": "sqrt", "max_depth": null}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.7527  Recall=0.7143  Precision=0.1020  F1=0.1786  ROC-AUC=0.8723  PR-AUC=0.3348
+    confusion(tn/fp/fn/tp)=135/44/2/5  cv_f1=0.2802  n_features=24  fit_time=0.5s
+    best_params={"var_smoothing": 1e-07}
+
+===== [5/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': ['corr', 'kbest'], 'corr_threshold': 0.9, 'imbalance': 'class_weight'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=class_weight | outlier=none
+    Accuracy=0.9624  Recall=0.8571  Precision=0.5000  F1=0.6316  ROC-AUC=0.9617  PR-AUC=0.8061
+    confusion(tn/fp/fn/tp)=173/6/1/6  cv_f1=0.4594  n_features=9  fit_time=434.1s
+    best_params={"kernel": "rbf", "gamma": "auto", "C": 10}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=class_weight | outlier=none
+    Accuracy=0.9892  Recall=0.7143  Precision=1.0000  F1=0.8333  ROC-AUC=0.9992  PR-AUC=0.9821
+    confusion(tn/fp/fn/tp)=179/0/2/5  cv_f1=0.5533  n_features=9  fit_time=456.6s
+    best_params={"n_estimators": 400, "min_samples_leaf": 1, "max_features": "log2", "max_depth": null}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=class_weight | outlier=none
+    Accuracy=0.7634  Recall=1.0000  Precision=0.1373  F1=0.2414  ROC-AUC=0.9050  PR-AUC=0.4246
+    confusion(tn/fp/fn/tp)=135/44/0/7  cv_f1=0.2262  n_features=9  fit_time=0.4s
+    best_params={"var_smoothing": 1e-11}
+
+===== [6/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': ['corr', 'kbest'], 'corr_threshold': 0.9, 'imbalance': 'smote'} =====
