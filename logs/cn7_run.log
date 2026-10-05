@@ -71,3 +71,17 @@ START 2026-10-05 15:21:38
     best_params={"var_smoothing": 1e-11}
 
 ===== [6/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': ['corr', 'kbest'], 'corr_threshold': 0.9, 'imbalance': 'smote'} =====
+[cn7/processed2] model=svc | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=smote | outlier=none
+    Accuracy=0.9624  Recall=0.7143  Precision=0.5000  F1=0.5882  ROC-AUC=0.9617  PR-AUC=0.6013
+    confusion(tn/fp/fn/tp)=174/5/2/5  cv_f1=0.4870  n_features=9  fit_time=327.8s
+    best_params={"kernel": "rbf", "gamma": "auto", "C": 100}
+[cn7/processed2] model=rf | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=smote | outlier=none
+    Accuracy=0.9839  Recall=0.8571  Precision=0.7500  F1=0.8000  ROC-AUC=0.9968  PR-AUC=0.9367
+    confusion(tn/fp/fn/tp)=177/2/1/6  cv_f1=0.4800  n_features=9  fit_time=308.3s
+    best_params={"n_estimators": 600, "min_samples_leaf": 1, "max_features": "sqrt", "max_depth": 20}
+[cn7/processed2] model=gnb | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=smote | outlier=none
+    Accuracy=0.8602  Recall=0.2857  Precision=0.0870  F1=0.1333  ROC-AUC=0.7957  PR-AUC=0.1111
+    confusion(tn/fp/fn/tp)=158/21/5/2  cv_f1=0.1778  n_features=9  fit_time=0.3s
+    best_params={"var_smoothing": 1e-11}
+
+===== [7/24] cn7/processed2 preprocessing: {'scaling': None, 'feature_selection': ['corr', 'kbest'], 'corr_threshold': 0.8, 'imbalance': 'class_weight'} =====

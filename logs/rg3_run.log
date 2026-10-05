@@ -33,3 +33,17 @@ START 2026-10-05 15:19:26
     Accuracy=0.9676  Recall=0.7143  Precision=0.8333  F1=0.7692  ROC-AUC=0.9148  PR-AUC=0.8543
     confusion(tn/fp/fn/tp)=169/2/4/10  cv_f1=0.6617  n_features=24  fit_time=566.0s
     best_params={"kernel": "rbf", "gamma": 0.1, "C": 1}
+[rg3/processed2] model=rf | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.9730  Recall=0.7143  Precision=0.9091  F1=0.8000  ROC-AUC=0.9841  PR-AUC=0.8793
+    confusion(tn/fp/fn/tp)=170/1/4/10  cv_f1=0.7369  n_features=24  fit_time=150.9s
+    best_params={"n_estimators": 400, "min_samples_leaf": 1, "max_features": "log2", "max_depth": null}
+[rg3/processed2] model=gnb | ssl=self_training | scaling=none | fs=none | imbalance=smote | outlier=none
+    Accuracy=0.3027  Recall=0.9286  Precision=0.0922  F1=0.1677  ROC-AUC=0.6562  PR-AUC=0.1319
+    confusion(tn/fp/fn/tp)=43/128/1/13  cv_f1=0.1689  n_features=24  fit_time=0.5s
+    best_params={"var_smoothing": 1e-07}
+
+===== [4/18] rg3/processed2 preprocessing: {'scaling': None, 'feature_selection': ['corr', 'kbest'], 'corr_threshold': 0.9, 'imbalance': None} =====
+[rg3/processed2] model=svc | ssl=self_training | scaling=none | fs=corr+kbest | imbalance=none | outlier=none
+    Accuracy=0.8919  Recall=0.5714  Precision=0.3636  F1=0.4444  ROC-AUC=0.8229  PR-AUC=0.5069
+    confusion(tn/fp/fn/tp)=157/14/6/8  cv_f1=0.4879  n_features=9  fit_time=78.7s
+    best_params={"kernel": "rbf", "gamma": "auto", "C": 100}
