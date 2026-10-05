@@ -22,13 +22,14 @@ if __name__ == "__main__":
         "rg3",
         "processed2",
         prep_grid={
-            "scaling": [None],
+            "scaling": [None, 'robust','minmax'],
             "feature_selection": [None, ["corr", "kbest"]],
-            "imbalance": ["class_weight", "smote"],
+            'corr_threshold': [0.9],
+            "imbalance": [None, "class_weight", "smote"],
         },
         models=["svc", "rf", "gnb"],
         ssl_methods=["self_training"],
-        n_iter={"default": 15, "dnn": 6},
+        n_iter={"default": 20},
         log_path="../logs/experiment_log.csv",
         # n_jobs=4,  # svc/rf/gnb 의 CV 를 병렬화하고 싶으면 주석 해제 (dnn 은 자동으로 1)
     )
